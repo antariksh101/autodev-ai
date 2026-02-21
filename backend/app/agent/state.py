@@ -13,14 +13,13 @@ class StepStatus(str, Enum):
 class AgentStep(BaseModel):
     id: int
     name: str
-    agent: str
+    tool: str
     status: StepStatus = StepStatus.pending
-    output: Dict[str, Any] = {}
+    result: Dict[str, Any] = {}
 
 
 class AgentState(BaseModel):
     build_id: str
     goal: str
     steps: List[AgentStep]
-    current_step: int = 0
     completed: bool = False
